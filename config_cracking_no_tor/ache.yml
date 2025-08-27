@@ -1,0 +1,37 @@
+target_storage.data_formats:
+  - FILES
+
+# Baic configuration in-depth web site crawling
+link_storage.link_strategy.use_scope: true
+link_storage.link_strategy.outlinks: true
+link_storage.link_selector: MaximizeWebsitesLinkSelector
+
+# 요청 사이의 간격
+link_storage.scheduler.host_min_access_interval: 10000
+
+link_storage.link_classifier.type: MaxDepthLinkClassifier
+link_storage.link_classifier.max_depth: 0
+
+crawler_manager.downloader.valid_mime_types:
+  - text/html
+
+# Tor proxy 관련 설정
+# crawler_manager.downloader.torproxy: http://torproxy:8118
+# crawler_manager.downloader.tor.max_retry_count: 5
+# crawler_manager.downloader.tor.socket_timeout: 2000000
+# crawler_manager.downloader.tor.connection_timeout: 2000000
+# crawler_manager.downloader.tor.connection_request_timeout: 2000000
+crawler.ignoreRobotsTxt: true
+
+# 크롤링에 필요한 쿠키
+crawler_manager.downloader.cookies:
+  - domain: cracking.org
+    cookie: "cf_clearance=opEKyyk2Fp3e3lvBX1EV5V7yIQfTjdi1wQUQ.NFiZ1Y-1756267672-1.2.1.1-ccAyHo5RMZKdxhx5pR61d70PXPQhv0WhjT_9RqtER8wAAQc5ia7Q4ac.xXtYBvo8yuqK6pANDcYQFrY5MenD.Z_z3mp_iGrHG2Hd8mRmjZwEGXKmifrOinpZZK57JLpvst.7ekoxeR7RZEv8nk7siCWt7j5G9rqQgBVCuAJcthXrV.nmQVP.VSPbwqD8oGeYNMtA.S4S7343dSheD1jC8V6_w5xbHyDLTyeAQvtXX8c; xf_csrf=DQl9PS-VJejSLCg1; _ga=GA1.1.1298756895.1756267674; xf_dbtechSecuritySession=RLy-IsACIeRCCzB_ZL5-F1a1URzrknAH; xf_user=597627%2Cing4bA58LjYFLSyfRYvlQavyI0xIyH5LfOtfP4VN; xf_session=Mvu_TPUHZjgIcLtMIXt756iCl0e0Rwa6; xf_xfaForumTabsSelectedTabId=root; xf_sam_ad_views=%7B%221%22%3A1756269511%7D; _ga_5BRQTKB0NC=GS2.1.s1756269510$o2$g1$t1756269926$j59$l0$h0"
+# UserAgent 설정
+crawler_manager.downloader.user_agent.string: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+crawler_manager.downloader.default_headers:
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  Accept-Language: "en-US,en;q=0.9"
+  Accept-Encoding: "gzip, deflate"
+  Referer: "https://cracking.org/"
+  Connection: "close"

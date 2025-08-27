@@ -1,0 +1,43 @@
+# services:
+#   ache:
+#     image: 403_async:latest
+#     command: startServer -c /config -d /data
+#     ports:
+#       - "8081:8080"
+#     volumes:
+#       - ./server-test/:/data
+#       - ./:/config
+#     depends_on:
+#       - torproxy
+#   torproxy:
+#     image: torproxy_hour_check:latest
+#     ports:
+#       - 8118:8118
+# services:
+#   ache:
+#     image: ache-test:latest
+#     platform: linux/amd64
+#     command: startServer -c /config -d /data
+#     ports:
+#       - "8082:8080"
+#     volumes:
+#       - ./server-test/:/data
+#       - ./:/config
+#     depends_on:
+#       - torproxy
+#   torproxy:
+#     image: torproxy-test:latest
+#     pull_policy: never                    
+#     platform: linux/amd64   
+#     ports:
+#       - 8118:8118
+services:
+  ache_cracking:
+    image: ache-test:latest
+    platform: linux/amd64
+    command: startServer -c /config -d /data
+    ports:
+      - "8083:8080"              # 避免和另一个实例端口冲突
+    volumes:
+      - ./server-cracking/:/data # 你存抓取结果的目录，随意
+      - ./config_cracking_no_tor/:/config  # 第一步新建的配置目录
